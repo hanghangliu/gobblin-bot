@@ -53,8 +53,8 @@ func main() {
 	}
 	modules := []joe.Module{
 		joehttp.Server(":" + config.Port),
-		// Schedule the daily digest cron job at 2:00:00 AM (UTC)
-		cron.ScheduleEvent("53 * * * * *", DailyDigestEvent{}),
+		// Schedule the daily digest cron job at 2:00:00 AM (UTC), which is California time 7 PM
+		cron.ScheduleEvent("0 0 2 * * *", DailyDigestEvent{}),
 	}
 	if config.SlackAppToken != "" && config.SlackBotUserToken != "" {
 		modules = append(modules, slack.Adapter(config.SlackBotUserToken))

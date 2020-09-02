@@ -60,7 +60,7 @@ func RunDailyDigest(c *Config) string {
 
 		ch := &slack.GetConversationHistoryParameters{
 			ChannelID: channel.ID,
-			Oldest:    fmt.Sprintf("%f", float64(time.Now().Add(-48*time.Hour).Unix())),
+			Oldest:    fmt.Sprintf("%f", float64(time.Now().Add(-24*time.Hour).Unix())),
 			Latest:    fmt.Sprintf("%f", float64(time.Now().Unix())),
 			Limit:     10000,
 		}
